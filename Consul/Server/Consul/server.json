@@ -1,0 +1,60 @@
+{
+    "node_name": "consul",
+    "server": true,
+    "bootstrap_expect": 1,
+    "ui_config": {
+      "enabled": true
+    },
+    "datacenter":"LOCAL",
+    "data_dir": "/consul/data",
+    "addresses": {
+      "http": "0.0.0.0"
+    },
+    "bind_addr": "0.0.0.0",
+    "client_addr": "0.0.0.0",
+    "log_level": "INFO",
+    "verify_incoming": false,
+    "verify_outgoing": false,
+    "verify_server_hostname": false,
+  
+    "services":[
+      {      
+        "id": "consul-ui",
+        "name": "consul-ui",
+        "tags": [
+          "Service Consul",
+          "Port 8500"
+        ],
+        "check": {
+          "id": "consul-ui",
+          "name":"consul service check",
+          "tcp":"localhost:8500",
+          "interval":"3s",
+          "timeout":"1s"
+        },
+        "port": 8500,
+        "meta": {
+          "meta": "Consul Server"
+        }
+    },
+    {
+      "id": "dnsmasq",
+      "name": "dnsmasq",
+      "tags": [
+        "Service DNSMASQ",
+        "Port 53"
+      ],
+      "check": {
+        "id": "dnsmasq",
+        "name":"dnsmasq service check",
+        "tcp":"localhost:53",
+        "interval":"3s",
+        "timeout":"1s"
+      },
+      "port": 53,
+      "meta": {
+        "meta": "dnsmasq Server"
+      }    
+    }
+  ]
+}

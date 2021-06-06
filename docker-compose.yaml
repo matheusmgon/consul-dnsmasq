@@ -1,0 +1,20 @@
+version: '3.2'
+
+networks:
+    consul:
+      driver: bridge
+
+services:
+    consul-server:
+        build:
+            context: .
+        container_name: consul-server
+        hostname: consul-server
+        networks:
+            - consul
+        ports:
+            - 0.0.0.0:8500:8500
+            - 192.168.0.6:53:53
+        volumes:
+            - ./Consul/Server/Consul/server.json:/etc/consul/server.json
+        restart: always
