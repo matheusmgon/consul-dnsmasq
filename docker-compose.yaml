@@ -16,6 +16,8 @@ services:
             - 0.0.0.0:8500:8500
             - 0.0.0.0:53:53
             - 0.0.0.0:53:53/udp
+        cap_add:
+            - NET_ADMIN
         volumes:
             - ./Consul/Server/Consul/server.json:/etc/consul/server.json
         restart: always
