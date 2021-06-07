@@ -4,6 +4,8 @@ RUN apk update; apk add --no-cache \
 	vim \
 	curl \
 	wget \
+	bind-tools \
+	net-tools \
 	python3 \
 	py3-pip \
 	dnsmasq \
